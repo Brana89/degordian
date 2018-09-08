@@ -1,0 +1,37 @@
+//Footer section
+footer {
+  width: 100%;
+  margin: 0 auto;
+  .footerLinks {
+    width: 90%;
+    @include clearfix();
+    margin: 0 auto;
+    .box {
+      float: left;
+      width: 25%;
+      .title {
+        padding-bottom: 2em;
+      }
+    }
+    .soGeLinks {
+      clear: both;
+      padding: 2em 0 3em 0;
+    }
+  }
+  .footerBottom {
+    font-size: 70%;
+    padding: 1em;
+    width: 90%;
+    @include clearfix();
+    margin: 0 auto;
+    p {
+    float: left;
+      &:nth-child(1) {
+      width: 70%;
+      }
+      &:nth-child(3) {
+        padding-left: 1em;
+      }
+    }
+  } 
+}
