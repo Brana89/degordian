@@ -9,6 +9,9 @@
 }
 
 .input__field {
+	white-space: pre;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 	position: relative;
 	display: block;
 	float: right;
@@ -67,18 +70,26 @@
 /* form */
 .input--form {
 	overflow: hidden;
+	overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .input__field--form {
+	white-space: pre;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 	margin-top: 1em;
 	padding: 1em 0.15em;
 	width: 100%;
 	background: transparent;
 	color: #595F6E;
 }
+#counter2 {
+	height: 120px;
+}
 
 #input-2 {
-  padding-top: 3em;
+	padding-top: 3em;
 }
 
 .input__label--form {
@@ -87,7 +98,7 @@
 	left: 0;
 	padding: 0 0.25em;
 	width: 100%;
-	height: calc(100% - 1em);
+	height: 100%;
 	text-align: left;
 	pointer-events: none;
 }
@@ -173,7 +184,10 @@ form.content {
   background-color: white;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+	transition: max-height 0.2s ease-out;
+	.textarea {
+		height: 120px;
+	}
 }
 .radioButtons {
   text-align: left;
@@ -190,7 +204,12 @@ button.sendBtn {
   color: #fff;
   display: block;
   float: right;
-  margin-right: 3.5em;
+	margin-right: 3.5em;
+	&:hover {
+		background-color: #fff;
+		color: $red-color;
+		transition: all 1s ease;
+	}
 }
 button.closeBtn {
   display: block;
@@ -202,4 +221,17 @@ button.closeBtn {
     vertical-align: bottom;
     margin-left: 5px;
   }
+}
+
+#textarea_feedback, #textarea_feedback2 {
+	display: block;
+	text-align: center;
+	max-width: 450px;
+	text-align: right;
+	margin: 0 auto;
+}
+
+.error {
+	color: $red-color;
+	margin: 1em 0; 
 }

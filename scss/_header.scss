@@ -5,6 +5,11 @@ ul.topNav {
   display: flex;
   flex-direction: row;
   padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
   li {
     padding: 10px;
     a {
@@ -54,6 +59,10 @@ ul.topNav {
   .w3-large {
     color: #fff;
     max-width: 40%;
+    h1 {
+      margin: 1em 0;
+      background-color: rgba(0,0,0,0.2);
+    }
     p:nth-child(1) {
       background-color: $red-color;
       display: inline;
@@ -61,6 +70,7 @@ ul.topNav {
     }
     p:nth-child(3), p:nth-child(2) {
       margin-bottom: 2em;
+      background-color: rgba(0,0,0,0.2);
     }
     .lighterText {
       font-family: $font-stack-light;
@@ -78,6 +88,7 @@ ul.topNav {
   button {
     outline: none;
     margin: 20px;
+    background-color: transparent;
     svg:hover {
       fill: $red-color;
     }
@@ -93,13 +104,11 @@ ul.topNav {
     svg {
       display: block;
       margin: 15px auto;
-      transform: rotate(90deg);
-      transform: translateX(0);
+      transform: translateY(0);
       transition: transform 1s ease;
     }
     &:hover svg {
-      transform: translateX(10px);
-        transform: rotate(90deg);
+      transform: translateY(10px);
     }
   }
 }
@@ -120,6 +129,7 @@ div.mySlides img {
   height: 13px;
   width: 13px;
   padding: 0;
+  border: 1px solid $red-color;
 }
 @keyframes textAnimation {
   0% {
@@ -136,15 +146,16 @@ ul.bottomNav {
   flex-direction: row;
   padding: 10px;
   align-items: center;
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 60px;
   width: 100%;
+  z-index: 3;
   color: #fff;
+  background-image: linear-gradient(#000, transparent);
   li {
     padding: 5px 10px;
     a:hover {
+      transition: color .5s ease;
       color: $red-color;
     }
   }
@@ -168,3 +179,15 @@ ul.bottomNav {
     }
   }
 }
+
+.is-hidden {
+  opacity: 0;
+  -webkit-transform: translate(0,-60px);
+  -webkit-transition: -webkit-transform .2s,background .3s,color .3s,opacity 0 .3s;
+}
+
+.is-visible {
+  opacity: 1;
+  -webkit-transform: translate(0,0);
+  -webkit-transition: -webkit-transform .2s,background .3s,color .3s;
+} 

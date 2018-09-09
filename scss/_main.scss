@@ -9,22 +9,26 @@ section {
     width: 75%;
     margin: 0 auto;
   }
+  }
   .content {
     width: 75%;
     margin: 0 auto;
     @include clearfix();
-  }
   .body {
     float: left;
     width: $one-third-width;
   }
-  .numscroller {
-    font-size: 3em;
-  }
-  hr {
-    width: 100%;
-    margin: 1em 0;
-  }
+}
+
+hr {
+  width: 100%;
+  margin: 2em 0;
+  clear: both;
+}
+
+.body {
+  float: left;
+  width: $one-third-width;
 }
 
 .firstSection, .secondSection, .sixthSection {
@@ -35,18 +39,18 @@ section {
   a {
     display: flex;
     justify-content: center;
+    clear: both; 
   }
 }
-//First Section
+//First Section 
 .firstSection {
-  padding: 10% 0;
+  padding: 10% 0; 
   h2 {
     color: $h2-color;
   }
-  p.numscroller {
+  p.numscroller { 
     color: $red-color;
-  }
-  p.one {
+    font-size: 3em;
     font-family: $font-stack-light;
   }
   p {
@@ -65,6 +69,8 @@ section {
       font-family: $font-stack-light;
       align-self: flex-end;
       margin-left: 10px;
+      display: flex;
+      align-items: center;
     }
   }
   .boldText {
@@ -93,6 +99,10 @@ section {
   }
   .body {
     text-align: left;
+    padding-bottom: 2em;
+  }
+  a {
+    color: $red-color;
   }
 }
 
@@ -110,18 +120,29 @@ section {
   @include clearfix();
   .heading {
     float: left;
-    width: 25%;
+    width: 20%;
+    h2 {
+      color: $h2-color;
+    }
   }
   .container {
     position: relative;
     height: 550px;
-    .backgroundAnim {
+    .animation-element-three {
       position: absolute;
       top: 0;
       right: 0;
-      background-color: salmon;
+      background-color: $red-color;
       width: 60%;
       height: 300px;
+      transform: translateX(110%);
+    }
+    .in-view-three {
+      animation: thirdSectionAnimationTwo 1s ease forwards;
+    }
+    @keyframes thirdSectionAnimationTwo {
+      0%{transform: translateX(110%);}
+      100%{transform: translateX(0%);}
     }
     .imageContainer {
       position: absolute;
@@ -149,10 +170,14 @@ section {
   }
   a {
     display: flex;
+    color: $red-color;
+  }
+  p {
+    color: $text-color;
   }
 } 
 .in-view-two {
-  animation: thirdSectionAnimation .6s ease forwards;
+  animation: thirdSectionAnimation .6s .6s ease forwards;
 }
 @keyframes thirdSectionAnimation {
   0%{transform: translateX(100%);}
@@ -164,10 +189,81 @@ section {
 .fourthSection {
   .body, a {
     text-align: left;
+    cursor: pointer;
+  }
+  .body {
+    float: left;
   }
   .heading {
     text-align: center;
   }
+  h5 {
+    font-family: $font-stack;
+  }
+  p {
+    color: $text-color;
+  }
+  a {
+    color: $red-color;
+    display: flex;
+    padding-top: 1em;
+  }
+  .paddingBetween {
+    padding: 0 1em 0 1em;
+  }
+  //Code for image overlay effect
+  .container {
+    position: relative;
+  }
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: $red-color;
+  }
+  .body:hover .overlay {
+    opacity: 0.6;
+  }
+  .overlay svg {
+    display: block;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  @keyframes linkSvgAnim {
+    0%{transform: translate(-50%, -50%);}
+    0%{transform: translate(-50%, 0%);}
+  }
+  .body:hover .overlay svg {
+    animation: linkSvgAnim 1s ease forwards;
+  }
+  
+//Code for image overlay effect
+}
+
+a.buttonAnim:hover svg {
+  animation: linkSvgAnim2 1s ease forwards;
+}
+@keyframes linkSvgAnim2 {
+  0%{transform: translateX(0);}
+  100%{transform: translateX(20px);}
 }
 
 //Fifth Section
@@ -189,6 +285,10 @@ section {
       width: 100%;
       max-width: 120px;
       cursor: pointer;
+      color: #fff;
+      background-color: $red-color;
+      outline: none;
+      border: none;
     }
   }
 }
@@ -203,5 +303,45 @@ section {
     width: 100%;
     max-width: 160px;
     height: 35px;
+    margin-top: 1em;
+    &:hover {
+      background-color: $red-color;
+      color: #fff;
+      transition: all 1s ease;
+    }
+  }
+  a.closeBtn {
+    justify-content: flex-end;
+    padding-top: 2em;
+    cursor: pointer;
+  }
+}
+
+//CSS for section one for smaller screens
+section.smallerScreen {
+  text-align: center;
+  .collapsible {
+    background-color: $red-color;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 80%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin: 1em;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
   }
 }
